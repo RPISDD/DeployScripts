@@ -1,0 +1,20 @@
+# How to Use
+
+1. Install Terraform, following instructions here: <https://terraform.io/intro/getting-started/install.html>
+
+2. Create a secret.tf file with the following contents:
+
+provider "aws" {
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECRET_KEY"
+}
+
+3. Run terraform plan
+
+4. Run terraform apply
+
+5. Select default options
+
+6. Wait for execution to complete
+
+7. Check to ensure configuration is correct

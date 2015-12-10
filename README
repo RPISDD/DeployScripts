@@ -1,6 +1,12 @@
+# Prerequisites
+
+This set-up process requires a modern Linux distribution, such as Fedora 22, to
+function.
+
 # How to Use
 
-1. Install Terraform, following instructions here: <https://terraform.io/intro/getting-started/install.html>
+1. Install Terraform, following instructions here:
+<https://terraform.io/intro/getting-started/install.html>
 
 2. Create a secret.tf file with the following contents:
 
@@ -9,12 +15,37 @@ provider "aws" {
   secret_key = "YOUR_SECRET_KEY"
 }
 
-3. Run terraform plan
+You will need to set up an AWS account and
+generate an access_key and secret_key.
+The instructions can be found here:
+<http://docs.aws.amazon.com/AWSSimpleQueueService
+/latest/SQSGettingStartedGuide/AWSCredentials.html>
 
-4. Run terraform apply
+3. Run `terraform plan`
 
-5. Select default options
+4. Run `terraform apply`
+
+5. Select default options when running `terraform apply`
 
 6. Wait for execution to complete
 
-7. Check to ensure configuration is correct
+7. Log into AWS console and navigate to DynamoDB. Clock on "Tables" and 
+verify that tables have been created (e.g. "classInfo", "userFriends", etc...)
+
+8. Install nodejs using your operating system's package manager. 
+
+9. Create a credentials.js file inside TimeCloud/lib/shared/ with the following
+contents:
+
+var credentials = {
+  'accessKeyId': 'YOUR_ACCESS_KEY',
+  'secretAccessKey': 'YOUR_SECRET_KEY'
+};
+
+module.exports = credentials;
+
+10. Navigate to the root of the TimeCloud directory and execute `node main.js`
+
+11. Navigate to <http://localhost:5000>
+
+Your copy of TimeShift is now running, congratulations!
